@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+!/usr/bin/python3
 # 0-add_integer.py
 """Defines an integer addition function."""
 
