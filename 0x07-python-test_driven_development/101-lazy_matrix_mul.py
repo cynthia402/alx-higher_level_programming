@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""multiplies 2 matrices by using the module NumPy."""
-
-import numpy
+""" define function multiplies matrix"""
+dot = __import__("numpy").dot
 
 
 def lazy_matrix_mul(m_a, m_b):
-    """multiplies 2 matrices"""
-    return (numpy.matmul(m_a, m_b))
+    """ represent fuction """
+    return dot(m_a, m_b)
