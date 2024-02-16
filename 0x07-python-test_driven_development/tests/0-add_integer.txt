@@ -1,0 +1,76 @@
+"""file that test module 0-add_integer.py"""
+# first case: add two positive integer
+::
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+import the function
+
+::
+>>> add_integer(float("nan"))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+
+>>> add_integer(1, 2)
+3
+
+add to positive integer
+::
+
+>>> add_integer(100, -2)
+98
+
+add positive and negative number
+::
+
+>>> add_integer(10.5, 3)
+13
+
+add mixied integer float and int
+::
+
+>>> add_integer(2)
+100
+
+add with defalut value of b
+::
+>>> add_integer(-4, -4)
+-8
+
+add two negative
+::
+
+>>> add_integer(10.5, 10.5)
+20
+
+add two float that are type cast to int
+::
+>>> add_integer("abel", 3)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+raise type error for value of a being string
+::
+>>> add_integer(8, "abel")
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+raise type error for value of a being string
+::
+>>> add_integer("abel", "abel")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+raise type error when both input are neither int or float
+::
+>>> add_integer(float("inf"),)
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+raise overflow error when input is too big
+::

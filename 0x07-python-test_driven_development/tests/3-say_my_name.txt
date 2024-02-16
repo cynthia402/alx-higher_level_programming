@@ -1,0 +1,53 @@
+=========================================================
+how 3-say_my_name.py works, how to use
+==========================================================
+USAGE:
+     say_my_name(first_name, last_name="")
+
+     say_my_name: is function that print full name(str type)
+     first_name(str): input as first name
+     last_name (str): input for last name
+============================================================		      
+::
+first import the module that hold our function defination
+
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+::
+test using input of both string type
+
+>>> say_my_name("Abel", "Tibeso")
+My name is Abel Tibeso
+
+::
+test what if the first input is not string
+
+>>> say_my_name(1, "Tibeso")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+::
+test what if the last input is not string
+
+>>> say_my_name("Abel", 2)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+::
+test-> what if both in put are not string
+
+>>> say_my_name(1, 2)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+::
+test-> what if there are leadding and trialling space
+
+>>> say_my_name(" Abel ", " Tibeso  ")
+My name is Abel Tibeso
+
+::
+test-> what if Names with non-printable characters
+
+>>> say_my_name("a@bel", "t&ibeso")
+My name is a@bel t&ibeso

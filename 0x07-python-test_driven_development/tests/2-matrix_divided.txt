@@ -1,0 +1,68 @@
+========================================================
+this text file tests how 2-matrix_divided.py module works
+========================================================
+usage:
+     matrix_divided(matrix, div)
+     
+     matrix is list of lists(matrix of equal size lists)
+     div is non zero integer
+     Returns: division result and the value is rounded to
+     two floating point
+=========================================================
+
+::
+first import the function(matrix_divided)
+
+>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+::
+test matrix divtion by integer
+
+>>> matrix_divided([[3, 3], [6, 6]], 3)
+[[1.0, 1.0], [2.0, 2.0]]
+
+::
+
+test matrix divistion by zero
+
+>>> matrix_divided([[3, 3], [6, 6]], 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+::
+test matrix other than list
+
+>>> matrix_divided(([3, 3], [6, 6]), 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+::
+test non int or float matrix
+
+>>> matrix_divided((['3', '3'], ['6', '6']), 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+::
+test different size of list of lists in matrix
+
+>>> matrix_divided([[3, 3], [6, 6, 6]], 3)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+::
+test if div is other than int or float
+
+>>> matrix_divided([[3, 3], [6, 6]], "3")
+Traceback (most recent call last):
+TypeError: div must be a number
+
+::
+test with different length of list
+>>> print(matrix_divided([[2], [2, 4]], 2))
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+>>> print(matrix_divided(None, None))
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats

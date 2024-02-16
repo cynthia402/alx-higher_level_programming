@@ -1,0 +1,50 @@
+=======================================================
+module to test different scenario of how to use 
+text_indentation function
+========================================================
+USAGE:
+    text_indentation(text)
+
+    text_indentation: function that take text as input and 
+                      print with one of "., ?, :" charcter
+		      at the end
+    text(string): input of type str
+==========================================================
+::
+test-> first import the function
+
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+::
+test-> with text that contain ., ?, :
+
+>>> text_indentation("what is your name? abel Tibeso. and student at : alx")
+what is your name?
+<BLANKLINE>
+abel Tibeso.
+<BLANKLINE>
+and student at :
+<BLANKLINE>
+alx
+
+::
+test-> with other type of text
+
+>>> text_indentation(["what is your name? abel Tibeso. and student at : alx"])
+Traceback (most recent call last):
+TypeError: text must be a string
+
+::
+test-> if text is missed
+
+>>> text_indentation(None)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+::
+test-> with space at the start of text
+>>> text_indentation(" space before.")
+space before.
+<BLANKLINE>
+
+::
