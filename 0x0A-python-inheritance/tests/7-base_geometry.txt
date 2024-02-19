@@ -1,0 +1,70 @@
+===============================================================
+tests module 7-base_geometry.py: how it works and how it is used
+================================================================
+::
+]first import the the class from module 7-base_geometry.py
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+::
+create instance of BaseGeometry
+
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+
+::
+Trying to print the area
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+ 	      ...
+Exception: area() is not implemented
+
+::
+trying to validate non int value
+>>> bg.integer_validator("age", "not int")
+Traceback (most recent call last):
+              ...
+TypeError: age must be an integer
+
+::
+trying to pass value = 0
+
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+	...
+ValueError: age must be greater than 0
+
+::
+trying to pass value < 0
+
+>>> bg.integer_validator("age", -7)
+Traceback (most recent call last):
+	...
+ValueError: age must be greater than 0
+
+::
+trying to pass empty value
+
+>>> bg.integer_validator("age", False)
+Traceback (most recent call last):
+	...
+ValueError: age must be greater than 0
+
+::
+trying to pass one argument
+>>> bg.integer_validator("age")
+Traceback (most recent call last):
+	...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+::
+trying to pass no argument
+>>> bg.integer_validator()
+Traceback (most recent call last):
+	...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+::
