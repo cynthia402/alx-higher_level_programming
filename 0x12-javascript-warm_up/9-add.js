@@ -1,6 +1,11 @@
 #!/usr/bin/node
+
+const argv = process.argv.slice(2);
+const c = Number(argv[0]);
+const d = Number(argv[1]);
+
 function add (a, b) {
-  return a + b;
+  console.log(a + b);
 }
 
-console.log(add(Number(process.argv[2]), Number(process.argv[3])));
+add(c, d);

@@ -1,3 +1,10 @@
 #!/usr/bin/node
-const num = Math.floor(Number(process.argv[2]));
-console.log(isNaN(num) ? 'Not a number' : `My number: ${num}`);
+
+const argv = process.argv.slice(2);
+const intnum = Number(argv[0]);
+
+if (!isNaN(intnum)) {
+  console.log('My number: ' + Math.floor(intnum));
+} else {
+  console.log('Not a number');
+}
