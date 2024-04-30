@@ -1,37 +1,27 @@
 #!/usr/bin/python3
-"""
-This script lists all cities from
-the database `hbtn_0e_4_usa`.
-"""
+""" module that connect ot detabase and fetchall cities'"""
 
+
+import sys
 import MySQLdb
-from sys import argv
+
 
 if __name__ == '__main__':
-    """
-    Access to the database and get the cities
-    from the database.
-    """
+    myDb = MySQLdb.connect(
+        host='localhost',
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        database=sys.argv[3], port=3306)
 
-    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                         passwd=argv[2], db=argv[3])
+    myCursor = myDb.cursor()
 
-    with db.cursor() as cur:
-        cur.execute("""
-            SELECT
-                cities.id, cities.name, states.name
-            FROM
-                cities
-            JOIN
-                states
-            ON
-                cities.state_id = states.id
-            ORDER BY
-                cities.id ASC
-        """)
+    sql = f"SELECT id, name, (SELECT name FROM states\
+    WHERE id=cities.state_id) FROM cities ORDER BY cities.id ASC"
+    myCursor.execute(sql)
 
-        rows = cur.fetchall()
+    all_states = myCursor.fetchall()
+    for each in all_states:
+        print(each)
 
-    if rows is not None:
-        for row in rows:
-            print(row)
+    myCursor.close()
+    myDb.close()

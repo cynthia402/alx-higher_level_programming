@@ -1,42 +1,27 @@
 #!/usr/bin/python3
-"""
-This script takes in an argument and
-displays all values in the states
-where `name` matches the argument
-from the database `hbtn_0e_0_usa`.
+""" module that connect ot detabase and fetchall states in safe way'"""
 
-This time the script is safe from
-MySQL injections!
-"""
 
+import sys
 import MySQLdb
-from sys import argv
+
 
 if __name__ == '__main__':
-    """
-    Access to the database and get the states
-    from the database.
-    """
+    myDb = MySQLdb.connect(
+        host='localhost',
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        database=sys.argv[3], port=3306)
 
-    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                         passwd=argv[2], db=argv[3])
+    myCursor = myDb.cursor()
+    name = sys.argv[4]
+    sql = f"SELECT * FROM states WHERE name LIKE BINARY %s\
+                       ORDER BY states.id ASC"
+    myCursor.execute(sql, (name,))
 
-    with db.cursor() as cur:
-        cur.execute("""
-            SELECT
-                *
-            FROM
-                states
-            WHERE
-                name LIKE BINARY %(name)s
-            ORDER BY
-                states.id ASC
-        """, {
-            'name': argv[4]
-        })
+    all_states = myCursor.fetchall()
+    for each in all_states:
+        print(each)
 
-        rows = cur.fetchall()
-
-    if rows is not None:
-        for row in rows:
-            print(row)
+    myCursor.close()
+    myDb.close()
