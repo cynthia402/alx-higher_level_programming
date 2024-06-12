@@ -1,1 +1,6 @@
-document.querySelector('HEADER').style.color = '#FF0000';
+/*
+update color of the headder's tag content
+*/
+
+conts elem = document.querySelector('header');
+elem.style.color = '#FF0000';
